@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>كتاب عربي واقعي بدون غلاف</title>
+<style>
+:root{
+  --paper-color:#fdf0d5;
+  --text-color:#3e2c1c;
+  --burn-color:#d18b5f;
+}
+
+body {
+  margin:0;
+  height:100vh;
+  background:#2b2b2b;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:"Amiri",serif;
+  perspective:2200px;
+}
+
+.book {
+  position:relative;
+  width:900px;
+  height:600px;
+}
+
+.sheet {
+  position:absolute;
+  width:100%;
+  height:100%;
+  transform-style:preserve-3d;
+  transform-origin:right center;
+  transition:transform 1.2s linear;
+}
+
+.sheet.flipped { transform:rotateY(180deg); }
+
+.page {
+  position:absolute;
+  width:50%;
+  height:100%;
+  padding:30px;
+  box-sizing:border-box;
+  overflow-y:auto;
+  backface-visibility:hidden;
+  cursor:pointer;
+  background: var(--paper-color);
+  color: var(--text-color);
+  border-radius:4px;
+  border-left:1px solid rgba(0,0,0,0.05);
+  border-right:1px solid rgba(0,0,0,0.05);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.2), inset 0 0 0 6px var(--burn-color);
+}
+
+.page.right { right:0; transform-origin: center; }
+.page.left { left:0; transform-origin: center; }
+.sheet.flipped .page.left::after { right:0; }
+.sheet:not(.flipped) .page.right::after { left:0; }
+
+.page.right { right:0; }
+.page.left { left:0; }
+/* ظل عند المحور لكل صفحة */
+.page.left::after {
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:0; /* قرب المحور */
+  width:40px;
+  background: linear-gradient(to left, rgba(0,0,0,0.3), transparent);
+  pointer-events:none;
+}
+
+.page.right::after {
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0; /* قرب المحور */
+  width:40px;
+  background: linear-gradient(to right, rgba(0,0,0,0.3), transparent);
+  pointer-events:none;
+}
+
+/* subtle paper texture */
+.page.left, .page.right {
+  background-image: radial-gradient(rgba(0,0,0,0.015) 1px, transparent 1px), 
+                    radial-gradient(rgba(0,0,0,0.015) 1px, transparent 1px);
+  background-size: 12px 12px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1), inset 0 0 0 4px var(--burn-color);
+  transition: box-shadow 0.3s;
+}
+
+/* creative hover: slight highlight when flipping */
+.sheet.flipped .page.left,
+.sheet:not(.flipped) .page.right {
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.15), inset 0 0 0 4px var(--burn-color);
+}
+ul {
+  list-style: none; /* نحيد النقط التقليدية */
+; padding: 0;
+  margin: 0
+  direction: rtl; /* الكتابة من اليمين لليسار */
+}
+
+h1{text-align:center; font-size:2em; margin-bottom:1em;}
+p{line-height:1.8; text-align:justify;}
+</style>
+</head>
+<body>
+
+<div class="book">
+
+  <!-- الورقة 1 -->
+  <div class="sheet">
+    <div class="page right paper"><h2 style="text-align: center;font-size: 30px;" > مشروع في الادب العربي </h2>  <img src="image1.jpg" width="100%" height="451px" ></div>
+    <div class="page left paper"> <br> <br><br><br><h1 style="font-size: 55px;">"شهرزاد وشهريار"</h1> <br><br><br><br><br><br><br><br><br><br><br><p>المشاركون  :<ul style="text-align: left;"> <li >انيس بوسعة  2as </li> <li>نزيم بن عقيلة  2as</li></ul></p></div>
+  </div>
+
+  <!-- الورقة 2 -->
+  <div class="sheet">
+    <div class="page right paper"><h1>مقدمة عامة</h1><p>
+
+يُعتبر كتاب ألف ليلة وليلة واحدًا من أعظم الأعمال الأدبية في التاريخ العربي والعالمي، حيث يعكس ثقافة الشعوب العربية في العصر العباسي وما قبله. الكتاب يروي مجموعة من القصص التي تختلف في نوعها من قصص خيالية إلى قصص حقيقية، ويتنقل بين مختلف الأجواء والأساليب السردية التي تضفي على النص طابعًا فنيًا رائعًا. يرتبط ألف ليلة وليلة ارتباطًا وثيقًا بالعصر العباسي، حيث كان هذا العصر يشهد تطورًا ملحوظًا في الأدب والفكر والفن.
+
+ينتمي الكتاب إلى نوع الأدب الحكائي، حيث يستعرض قصصًا متعددة تتشابك مع بعضها البعض في تتابع مثير، ويتميز بالأسلوب القصصي الفريد الذي يعتمد على السرد التفاعلي والربط بين الأحداث والزمان والمكان. وقد أُدرجت حكايات ألف ليلة وليلة ضمن التراث الأدبي العربي الذي نال شهرة عالمية ولا يزال يُدرس في مختلف الجامعات.</p></div>
+    <div class="page left paper"><h1>تعريف كتاب "ألف ليلة وليلة" والفن القصصي في العصر العباسي</h1><p>ألف ليلة وليلة هو مجموعة من الحكايات التي ترويها شهرزاد لملكها شهريار من أجل إنقاذ حياتها، وذلك بعد أن كان شهريار قد قرر قتل كل امرأة يتزوجها بسبب خيانة زوجته الأولى. في كل ليلة، تروي شهرزاد قصة مثيرة تتركها غير مكتملة حتى الصباح، مما يجعل الملك يُؤجل إعدامها ليكتشف النهاية في الليلة التالية. تميزت هذه الحكايات بتعدد الأساليب السردية والغموض، مما جعلها واحدة من أهم الأعمال الأدبية في الأدب العربي والعالمي.
+
+في العصر العباسي، كان الأدب يشهد تحولات كبيرة، حيث ازدهرت حركة الترجمة من اللغات الأجنبية مثل الفارسية والهندية، مما أثرى الساحة الأدبية بالكثير من القصص التي تميزت بالسحر والأساطير. أصبح الأدب القصصي يهدف إلى تعليم الناس وتوجيههم من خلال الرموز والحكايات التي تحمل في طياتها معانٍ عميقة.</p></div>
+  </div>
+
+  <!-- الورقة 3 -->
+  <div class="sheet">
+    <div class="page right paper"><h2>"شهرزاد وشهريار"</h2>
+      <p>من بين العديد من الحكايات التي تتضمنها ألف ليلة وليلة، اخترت حكاية شهرزاد وشهريار التي تُعتبر واحدة من أشهر وأهم الحكايات في هذا الكتاب. الحكاية تمثل الصراع بين السلطة والذكاء، والتضحية من أجل المصلحة العامة، كما تجسد المواجهة بين الحكمة والتسلط.</p>  <br> <br> <br> <br><br><img src="image2.jpg" width="100%">
+
+    </div>
+    <div class="page left paper"><h2>مضمون الحكاية</h2> 
+      <p>تبدأ الحكاية عندما قرر الملك شهريار قتل كل امرأة يتزوجها بعد خيانة زوجته الأولى. ومع تتابع الأيام، يتزوج شهريار شهرزاد، وهي ابنة وزيره، التي قررت أن تروي له حكايات كل ليلة لتمديد حياتها. في كل مرة، تترك شهرزاد الحكاية معلقة في نهاية الليل، مما يثير فضول الملك ويؤجل تنفيذ حكمه. بهذه الطريقة، تنقلب العلاقة بين القاتل والمقتول، ويبدأ الملك في الانجذاب إلى ذكاء شهرزاد وحكمتها.</p> <h2>الشخصيات الرئيسية</h2> <p>شهرزاد: هي الشخصية المحورية في الحكاية، تمثل الذكاء والحكمة والقدرة على التأثير. هي امرأة شجاعة وذكية، تستخدم السرد القصصي كوسيلة للبقاء.
+
+شهريار: الملك الطاغي الذي يعكس الجوانب السلبية للسلطة المطلقة. في بداية الحكاية، يكون غارقًا في رغبة الانتقام، لكن مع مرور الوقت، تتغير شخصيته بفعل تأثير شهرزاد.</p></div>
+  </div>
+
+  <!-- الورقة 4 -->
+  <div class="sheet">
+    <div class="page right paper"><h1>االرمزية في الواقع المعاشي</h1><p>تمثل الحكاية بشكل عام الصراع بين العقل والسلطة. يمكن ربط شخصية شهرزاد بالذكاء الذي يتجاوز القسوة والظلم، حيث تستخدم حكاياتها كأداة للبقاء والنضال ضد السلطة. من جهة أخرى، يمثل شهريار القوة المستبدة التي تسعى للانتقام دون معرفة الحقيقة. كما أن الحكاية تحمل رمزية عن قوة الفكر في تغيير الأنظمة واستمرار الحياة رغم التحديات.
+
+يمكننا رؤية هذا في سياق المجتمع العباسي الذي كان يعاني من الظلم والتسلط، حيث كانت الكثير من الحكايات بمثابة مقاومة غير مباشرة ضد استبداد الحكام وتسلطهم على المجتمع.</p></div>
+    <div class="page left paper"><h1>الأسلوب السردي:</h1><p>السرد المستمر: تتسم الحكاية بنمط سردي لا يتوقف، مما يعكس التوتر الدائم والتشويق المستمر في القصة. كما أن شهرزاد، باستخدام مهاراتها في السرد، تبقي الملك على أطراف أصابعه طوال الحكاية.
+
+الحكايات داخل حكاية: أسلوب السرد داخل السرد يُعد أحد أبرز السمات في ألف ليلة وليلة، حيث تقوم شهرزاد بسرد حكاية تلو الأخرى. وهذا الأسلوب يُضفي تنوعًا ويشجع القارئ على الانغماس في التفاصيل.</p><h2>الوصف:</h2><p>الوصف الدقيق للأماكن والشخصيات: يمكن ملاحظة استخدام وصف دقيق للأماكن، مثل القصور و المجالس السلطانية، وكذلك الشخصيات التي تمثل ملامح المجتمع العباسي.
+
+الوصف النفسي: شهرزاد، في أثناء سردها للحكايات، تُظهر تغيرات في مشاعرها التي تتراوح بين التوتر والهدوء، مما يعكس الصراع الداخلي بين الرغبة في البقاء والمواجهة مع السلطة.</p> </div>
+  </div>
+ <div class="sheet">
+    <div class="page right paper">
+      <h1>الخاتمة</h1>
+      <p>
+    تُعتبر حكاية شهرزاد وشهريار واحدة من أروع الحكايات التي تبرز سحر الأدب العربي في العصر العباسي. من خلال شخصياتها المعقدة، وأسلوب السرد المميز، والرمزية العميقة، تُعبر الحكاية عن صراع الإنسان مع السلطة، وتقدم صورة واضحة عن كيفية تأثير الحكمة والفكر في تغيير الواقع. وفي النهاية، تظل حكاية شهرزاد نموذجًا للإبداع القصصي الذي لا يزال يحاكي الواقع الاجتماعي والسياسي حتى يومنا هذا.
+      </p> <img src="image3.jpg" width="100%" height="250px">
+    </div>
+    <div class="page left paper">
+      <h1></h1>
+      <p>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+<audio id="flipSound" src="page-flip.mp3"></audio>
+
+<script>
+const sheets = document.querySelectorAll(".sheet");
+let current = 0;
+let flipping = false;
+const flipSound = document.getElementById("flipSound");
+
+// ضبط z-index لكل صفحة
+sheets.forEach((s,i)=>s.style.zIndex = sheets.length - i);
+
+function playSound() { flipSound.currentTime=0; flipSound.play(); }
+
+function nextPage() {
+  if(!flipping){
+    flipping = true;
+    playSound();
+
+    // تقليب الصفحة الحالية
+    sheets[current].classList.add("flipped");
+    current++;
+
+    // لو وصلنا للنهاية نرجع للبداية
+    if(current >= sheets.length){
+      current = 0;
+      setTimeout(()=>{
+        sheets.forEach(s => s.classList.remove("flipped"));
+      }, 1200); // بعد انتهاء التحريك
+    }
+
+    setTimeout(()=>flipping=false,1200);
+  }
+}
+
+function prevPage() {
+  if(!flipping){
+    flipping = true;
+    playSound();
+
+    current--;
+    if(current < 0) {
+      // لو رجعنا قبل أول صفحة نروح لآخر
+      current = sheets.length - 1;
+      sheets[current].classList.add("flipped");
+      setTimeout(()=>{
+        for(let i=0;i<sheets.length-1;i++){
+          sheets[i].classList.add("flipped");
+        }
+      }, 10);
+    } else {
+      sheets[current].classList.remove("flipped");
+    }
+
+    setTimeout(()=>flipping=false,1200);
+  }
+}
+
+// إضافة أحداث النقر لكل صفحة
+sheets.forEach(sheet=>{
+  const left = sheet.querySelector(".page.left");
+  const right = sheet.querySelector(".page.right");
+  left.addEventListener("click", e=>{ e.stopPropagation(); nextPage(); });
+  right.addEventListener("click", e=>{ e.stopPropagation(); prevPage(); });
+});
+</script>
+
+
+</body>
+</html>
